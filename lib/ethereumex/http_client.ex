@@ -14,7 +14,7 @@ defmodule Ethereumex.HttpClient do
   def post_request(payload, opts) do
     headers = [{"Content-Type", "application/json"}]
     url = Keyword.get(opts, :url) || Config.rpc_url()
-    Logger.info("Ethereum posting to #{url}")
+    Logger.info("Ethereum posting to #{url} my environment is #{Mix.env()}")
     case HTTPoison.post(url, payload, headers, Config.http_options()) do
       {:ok, response} ->
         %HTTPoison.Response{body: body, status_code: code} = response

@@ -6,8 +6,10 @@ defmodule Ethereumex do
 
   alias Ethereumex.Config
   alias Ethereumex.Counter
+  require Logger
 
   def start(_type, _args) do
+    Logger.info("Ethereumex UZ start")
     :ok = Counter.setup()
     children = Config.setup_children()
     opts = [strategy: :one_for_one, name: Ethereumex.Supervisor]
